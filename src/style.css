@@ -137,3 +137,18 @@
 .fa-cloud-rain {
   color: #71bfcf;
 }
+#coder-wrapper {
+  background: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-family: Camber, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+}
+.coder-links {
+  max-width: 40px;
+  filter: invert(100%);
+}
+#coder-socials {
+  text-align: right;
+}
