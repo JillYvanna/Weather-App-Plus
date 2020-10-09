@@ -59,20 +59,24 @@ function showTemp(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed) + `mph`;
   let searchLocation = document.querySelector("h1");
-  let inputLocation = document.querySelector("#input-city");
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
+
 }
+
 function locationSearch(event) {
   event.preventDefault();
   let searchLocation = document.querySelector("h1");
-  let inputLocation = document.querySelector("#input-city");
+  let inputLocation = document.querySelector("#input-city"); 
   searchLocation.innerHTML = `${inputLocation.value}`;
+  if (inputLocation.value !=)
   let units = `&units=metric`;
   let city = inputLocation.value;
   let key = `&appid=87fd0529e40a37893f5aceb0fea3c12a`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}${key}${units}`;
+
   axios.get(apiUrl).then(showTemp);
-}
+ }
+
 
 let locationForm = document.querySelector("#location-form");
 locationForm.addEventListener("submit", locationSearch);
@@ -96,3 +100,5 @@ let locationIcon = document.querySelector("#current-location");
 locationIcon.addEventListener("click", currentLocation);
 
 navigator.geolocation.getCurrentPosition(latLocation);
+
+
