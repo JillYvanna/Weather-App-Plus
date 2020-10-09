@@ -42,7 +42,7 @@ function formatDate(date) {
   updateDateTime.innerHTML = `${currentDay}, ${currentDate}th ${currentMonth} ${currentHour}:${currentMinute}`;
 }
 formatDate(now);
-debugger;
+
 function showTemp(response) {
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = Math.round(response.data.main.temp) + `°`;
@@ -63,7 +63,7 @@ function showTemp(response) {
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
 
 }
-
+debugger;
 function locationSearch(event) {
   event.preventDefault();
   let searchLocation = document.querySelector("h1");
