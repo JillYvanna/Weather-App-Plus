@@ -42,7 +42,7 @@ function formatDate(date) {
   updateDateTime.innerHTML = `${currentDay}, ${currentDate}th ${currentMonth} ${currentHour}:${currentMinute}`;
 }
 formatDate(now);
-
+debugger;
 function showTemp(response) {
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = Math.round(response.data.main.temp) + `°`;
