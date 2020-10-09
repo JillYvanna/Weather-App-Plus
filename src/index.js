@@ -59,6 +59,7 @@ function showTemp(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(response.data.wind.speed) + `mph`;
   let searchLocation = document.querySelector("h1");
+  let inputLocation = document.querySelector("#input-city");
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
 
 }
@@ -68,7 +69,6 @@ function locationSearch(event) {
   let searchLocation = document.querySelector("h1");
   let inputLocation = document.querySelector("#input-city"); 
   searchLocation.innerHTML = `${inputLocation.value}`;
-  if (inputLocation.value !=)
   let units = `&units=metric`;
   let city = inputLocation.value;
   let key = `&appid=87fd0529e40a37893f5aceb0fea3c12a`;
