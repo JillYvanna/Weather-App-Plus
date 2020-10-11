@@ -63,7 +63,7 @@ function showTemp(response) {
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
 
 }
-debugger;
+
 function locationSearch(event) {
   event.preventDefault();
   let searchLocation = document.querySelector("h1");
@@ -73,6 +73,7 @@ function locationSearch(event) {
   let city = inputLocation.value;
   let key = `&appid=87fd0529e40a37893f5aceb0fea3c12a`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}${key}${units}`;
+
   axios.get(apiUrl).then(showTemp);
  }
 
@@ -99,5 +100,4 @@ let locationIcon = document.querySelector("#current-location");
 locationIcon.addEventListener("click", currentLocation);
 
 navigator.geolocation.getCurrentPosition(latLocation);
-
 
