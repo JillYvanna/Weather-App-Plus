@@ -34,9 +34,9 @@
               </div>
               <div class="row container-today-weather">
                 <div class="col weatherLeft">
-                  <p>
+                  <p id="today-description">
                     Mostly Sunny <br />
-                    <i class="fas fa-cloud-sun todayIcon"></i>
+                    <i class="fas fa-cloud-sun todayIcon" id="today-icon"></i>
                   </p>
                 </div>
                 <div class="col container-right">
@@ -117,7 +117,7 @@
                     ></i>
                   </button>
                 </span>
-                <span class="col input-group">
+                <span class="col-10 input-group">
                   <form class="input-group mb-3" id="location-form">
                     <input
                       autocomplete="off"
@@ -140,8 +140,7 @@
               </div>
               <div class="container-forecast">
                 <div class="row row1 text">
-                  <p class="col-10 title">Forecast for the next 5 days</p>
-                  <span class="col-2 degrees2"><strong>C</strong> |F</span>
+                  <p class="col title">Forecast for the next 5 days</p>
                 </div>
                 <div class="container-days-forecast">
                   <div class="card friday">
