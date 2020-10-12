@@ -44,7 +44,6 @@ function formatDate(date) {
 formatDate(now);
 
 function showTemp(response) {
-  console.log(response)
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = Math.round(response.data.main.temp) + `°`;
   let highTemp = document.querySelector("#low-temp");
@@ -61,9 +60,10 @@ function showTemp(response) {
   wind.innerHTML = Math.round(response.data.wind.speed) + `mph`;
   let searchLocation = document.querySelector("h1");
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
-  let weatherDetail = document.querySelector("#today-description")
+  let weatherDetail = document.querySelector("#today-description");
   weatherDetail.innerHTML = response.data.weather[0].description;
-
+  iconElement=document.querySelector("#today-icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`)
 }
 
 function locationSearch(event) {

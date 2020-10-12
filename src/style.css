@@ -1,11 +1,12 @@
 .weatherApp {
-  margin: 50px auto;
+  margin: 25px auto;
   width: 100%;
   font-family: "Montserrat", "Source Sans Pro", Arial, Helvetica, sans-serif;
 }
 .card.weatherCard {
   border: 5px solid #fe3667;
   box-shadow: 5px 5px 7px rgba(93, 101, 115, 0.3);
+  border-radius: 15px;
 }
 .verticalLine {
   border-right: 5px solid #fe3667;
@@ -37,12 +38,10 @@
   color: #fe3667;
   text-transform: capitalize;
 }
-.todayIcon {
-  font-size: 175px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  color: #ffe167;
+#today-icon {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
 }
 .container-right {
   text-align: center;
@@ -70,7 +69,7 @@
 }
 .weatherDetail p {
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: 19px;
   color: rgb(93, 101, 115);
 }
 .weatherDetail strong {
@@ -100,6 +99,7 @@
   margin-bottom: 10px;
   border: 2px solid rgba(93, 101, 115, 0.7);
   box-shadow: 2px 2px 7px rgba(93, 101, 115, 0.3);
+  border-radius: 10px;
 }
 .cardDay .row .date {
   padding-right: 0;
@@ -135,12 +135,16 @@
 .fa-cloud-rain {
   color: #71bfcf;
 }
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 #coder-wrapper {
   background: #fe3667;
   color: #fff;
   font-family: Camber, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  padding-bottom: 0;
   text-align: center;
   width: 100%;
 }
