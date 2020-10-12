@@ -91,7 +91,6 @@
 .input-group-addon {
   position: absolute;
 }
-
 .container-forecast .text p {
   margin-bottom: 0;
   text-align: left;
@@ -102,63 +101,48 @@
   font-size: 20px;
 }
 
-.container-days-forecast .card {
-  margin-bottom: 10px;
-  border: 2px solid rgba(93, 101, 115, 0.7);
-  box-shadow: 2px 2px 7px rgba(93, 101, 115, 0.3);
-  border-radius: 10px;
-}
-.cardDay .row .date {
-  padding-right: 0;
-}
-.cardDay .row .day {
-  padding: 0;
-}
-
 .date {
-  font-size: 25px;
-  text-align: left;
+  font-size: 24px;
+  text-align: center;
   color: #fe3667;
+  margin: auto;
+  font-family: "Montserrat thin 100", "Source Sans Pro", Camber, Helvetica,
+    Arial;
 }
 .day {
-  font-size: 30px;
+  font-size: 26px;
   text-align: left;
   color: #fe3667;
   font-weight: bolder;
+  margin: auto;
+  font-family: "Montserrat", "Source Sans Pro", Camber, Helvetica, Arial;
 }
 .weather .fas {
   font-size: 34px;
 }
+#forecast-icon {
+  width: 100%;
+}
+#forecast-card {
+  padding: 0 0;
+  margin-bottom: 8px;
+  border: 2px solid rgba(93, 101, 115, 0.7);
+  box-shadow: 2px 2px 7px rgba(93, 101, 115, 0.3);
+  border-radius: 10px;
+  background: #ffffffa9;
+}
+
 .highLow {
-  font-size: 17px;
+  font-size: 20px;
   color: #fe3667;
+  margin: auto;
 }
-.fa-cloud {
-  color: #b9bbc7;
-}
-.fa-cloud-sun {
-  color: #ffe167;
-}
-.fa-cloud-rain {
-  color: #71bfcf;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-#coder-wrapper {
-  background: #fe3667;
-  color: #fff;
-  font-family: Camber, Helvetica, Arial, sans-serif;
+
+#coder {
+  color: black;
+  font-family: "Montserrat", "Source Sans Pro", Camber, Helvetica, Arial,
+    sans-serif;
   font-size: 16px;
-  text-align: center;
+  text-align: Left;
   width: 100%;
-}
-.coder-links {
-  max-width: 40px;
-  filter: invert(100%);
-}
-#coder-socials {
-  text-align: right;
 }

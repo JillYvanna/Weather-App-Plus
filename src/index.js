@@ -23,6 +23,20 @@ let months = [
   "November",
   "December",
 ];
+let shortMonths = [
+  "JAN",
+  "FEB",
+  "MAR",
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+];
 
 function formatDate(date) {
   let currentDay = days[date.getDay()];
@@ -62,20 +76,19 @@ function formatDateHM(timestamp) {
 function formatForecastDate(timestamp) {
   let formatdate = new Date(timestamp);
   let date = formatdate.getDate();
-  let month = formatdate.getMonth();
+  let month = shortMonths[formatdate.getMonth()];
   if (month < 10) {
     month = `0${month}`;
   }
   if (date < 10) {
     date = `0${date}`;
   }
-  return `${date}/${month}`;
+  return `${date} ${month}`;
 }
 
 function formatForecastDay(timestamp) {
   let formatdate = new Date(timestamp);
   let day = days[formatdate.getDay()];
-  console.log(day);
   return `${day}`;
 }
 
@@ -149,9 +162,32 @@ function latLocation(position) {
 }
 
 function displayForecast(response) {
-  console.log(response);
-}
+  let forecastDays = document.querySelector("#forecast-days");
+  forecastDays.innerHTML = null;
+  let forecast = null;
+  for (let index = 0; index < 40; index += 8) {
+    forecast = response.data.list[index];
+    forecastDays.innerHTML += ` 
+    
+  <div class="card-body cardDay" id="forecast-card">
+     <div class="row row1" >
+      <span class="col-2 date">${formatForecastDate(forecast.dt * 1000)}</span>
+      <span class="col-5 day">${formatForecastDay(forecast.dt * 1000)}</span>
+      <span class="col-3 weather" >
+      <img id="forecast-icon" src="http://openweathermap.org/img/wn/${
+        forecast.weather[0].icon
+      }@4x.png"/>
+        </span>
+      <span class="col-2 highLow">
+        <strong>  ${Math.round(
+          forecast.main.temp_max
+        )}°</strong> <br />${Math.round(forecast.main.temp_min)}°</span
+      >
+    </div>
 
+</div>`;
+  }
+}
 let locationIcon = document.querySelector("#current-location");
 locationIcon.addEventListener("click", currentLocation);
 
