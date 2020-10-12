@@ -30,7 +30,7 @@ function formatDate(date) {
   let currentDate = date.getDate();
   let currentHour = date.getHours();
   let currentMinute = date.getMinutes();
-  let updateDateTime = document.querySelector(".dateTime");
+
   if (currentHour < 10) {
     currentHour = `0${currentHour}`;
   }
@@ -39,13 +39,30 @@ function formatDate(date) {
     currentMinute = `0${currentMinute}`;
   }
 
-  updateDateTime.innerHTML = `${currentDay}, ${currentDate}th ${currentMonth} ${currentHour}:${currentMinute}`;
+  return `${currentDay}, ${currentDate}th ${currentMonth} ${currentHour}:${currentMinute}`;
 }
-formatDate(now);
 
+let updateDateTime = document.querySelector(".dateTime");
+updateDateTime.innerHTML = formatDate(now);
+
+function formatDateSH(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hour}:${minutes}`;
+}
 function showData(response) {
-  console.log(response);
-
+  let sunriseTime = document.querySelector("#sunrise");
+  sunriseTime.innerHTML = formatDateSH(response.data.sys.sunrise * 1000);
+  let sunsetTime = document.querySelector("#sunset");
+  sunsetTime.innerHTML = formatDateSH(response.data.sys.sunset * 1000);
   celsiusTemp = response.data.main.temp;
   highCelsiusTemp = response.data.main.temp_max;
   lowCelsiusTemp = response.data.main.temp_min;
