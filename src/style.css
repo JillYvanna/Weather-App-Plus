@@ -60,6 +60,13 @@
   font-size: 30px;
   color: #fe3667;
 }
+.degrees .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+.degrees .active:hover {
+  text-decoration: none;
+}
 .sunset-rise {
   margin-bottom: 0;
   font-size: 20px;

@@ -34,15 +34,14 @@
               </div>
               <div class="row container-today-weather">
                 <div class="col weatherLeft">
-                  <p id="today-description">
-                    Sunny <br />
-                    <div>
+                  <p id="today-description">Sunny <br /></p>
+
+                  <div>
                     <img
                       src="http://openweathermap.org/img/wn/10n@4x.png"
                       id="today-icon"
                     />
                   </div>
-                  </p>
                 </div>
                 <div class="col container-right">
                   <div class="row row-1 highLowTemps">
@@ -64,7 +63,7 @@
                       <p class="todayTemp text-nowrap" id="current-temp">26°</p>
                     </div>
                     <div class="col-4 degrees text-nowrap">
-                      <a href="#" id="celcius-link">C</a> |
+                      <a href="#" class="active" id="celsius-link">C</a> |
                       <a href="#" id="farenheit-link">F</a>
                     </div>
                   </div>
@@ -73,11 +72,11 @@
                       <span class="sun-icon">
                         <i class="far fa-sun" aria-hidden="true"></i>
                       </span>
-                      <span class="sunrise">
+                      <span class="sunrise" id="sunrise">
                         <i class="fas fa-arrow-up" aria-hidden="true"></i>5:55
                         AM
                       </span>
-                      <span class="sunset">
+                      <span class="sunset" id="sunset">
                         <i class="fas fa-arrow-down" aria-hidden="true"></i>8:12
                         PM
                       </span>
@@ -116,10 +115,7 @@
               <div class="form-row search">
                 <span class="col-2">
                   <button class="btn" id="current-location">
-                    <i
-                      class="fas fa-map-marker-alt destinationIcon"
-                     
-                    ></i>
+                    <i class="fas fa-map-marker-alt destinationIcon"></i>
                   </button>
                 </span>
                 <span class="col-10 input-group">
