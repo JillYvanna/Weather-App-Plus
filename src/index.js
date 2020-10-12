@@ -44,6 +44,7 @@ function formatDate(date) {
 formatDate(now);
 
 function showTemp(response) {
+  console.log(response)
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = Math.round(response.data.main.temp) + `°`;
   let highTemp = document.querySelector("#low-temp");
@@ -60,6 +61,8 @@ function showTemp(response) {
   wind.innerHTML = Math.round(response.data.wind.speed) + `mph`;
   let searchLocation = document.querySelector("h1");
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
+  let weatherDetail = document.querySelector("#today-description")
+  weatherDetail.innerHTML = response.data.weather[0].description;
 
 }
 
@@ -73,7 +76,7 @@ function locationSearch(event) {
   let key = `&appid=87fd0529e40a37893f5aceb0fea3c12a`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}${key}${units}`;
 
-  axios.get(apiUrl).then(showTemp).then(weatherDescription)
+  axios.get(apiUrl).then(showTemp)
  }
 
 
@@ -100,10 +103,5 @@ locationIcon.addEventListener("click", currentLocation);
 
 navigator.geolocation.getCurrentPosition(latLocation);
 
-function weatherDescription(response){
-let weatherDetail = document.querySelector("#today-description")
-weatherDetail.innerHTML = `${response.data.weather.description}`
-let todayIcon = document.querySelector('#today-icon');
-}
 
-function weatherInfo(){}
+

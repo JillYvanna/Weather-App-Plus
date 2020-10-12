@@ -35,6 +35,7 @@
 .weatherLeft {
   font-size: 30px;
   color: #fe3667;
+  text-transform: capitalize;
 }
 .todayIcon {
   font-size: 175px;
