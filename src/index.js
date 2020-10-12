@@ -38,6 +38,27 @@ let shortMonths = [
   "DEC",
 ];
 
+let locationForm = document.querySelector("#location-form");
+locationForm.addEventListener("submit", locationSearch);
+
+let locationIcon = document.querySelector("#current-location");
+locationIcon.addEventListener("click", currentLocation);
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayImperial);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayMetric);
+
+let celsiusTemp = null;
+let highCelsiusTemp = null;
+let lowCelsiusTemp = null;
+
+let updateDateTime = document.querySelector(".dateTime");
+updateDateTime.innerHTML = formatDate(now);
+
+navigator.geolocation.getCurrentPosition(latLocation);
+
 function formatDate(date) {
   let currentDay = days[date.getDay()];
   let currentMonth = months[date.getMonth()];
@@ -55,9 +76,6 @@ function formatDate(date) {
 
   return `${currentDay}, ${currentDate}th ${currentMonth} ${currentHour}:${currentMinute}`;
 }
-
-let updateDateTime = document.querySelector(".dateTime");
-updateDateTime.innerHTML = formatDate(now);
 
 function formatDateHM(timestamp) {
   let date = new Date(timestamp);
@@ -91,7 +109,31 @@ function formatForecastDay(timestamp) {
   let day = days[formatdate.getDay()];
   return `${day}`;
 }
-
+function displayImperial(event) {
+  event.preventDefault();
+  let temperatureDisplayed = document.querySelector("#current-temp");
+  let highTemp = document.querySelector("#high-temp");
+  let lowTemp = document.querySelector("#low-temp");
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+  let farenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let highFarenTemp = (highCelsiusTemp * 9) / 5 + 32;
+  let lowFarenTemp = (lowCelsiusTemp * 9) / 5 + 32;
+  temperatureDisplayed.innerHTML = Math.round(farenheitTemp) + `°`;
+  highTemp.innerHTML = Math.round(highFarenTemp) + `°`;
+  lowTemp.innerHTML = Math.round(lowFarenTemp) + `°`;
+}
+function displayMetric(event) {
+  event.preventDefault();
+  let temperatureDisplayed = document.querySelector("#current-temp");
+  let highTemp = document.querySelector("#high-temp");
+  let lowTemp = document.querySelector("#low-temp");
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  temperatureDisplayed.innerHTML = Math.round(celsiusTemp) + `°`;
+  highTemp.innerHTML = Math.round(highCelsiusTemp) + `°`;
+  lowTemp.innerHTML = Math.round(lowCelsiusTemp) + `°`;
+}
 function showData(response) {
   let sunriseTime = document.querySelector("#sunrise");
   sunriseTime.innerHTML = formatDateHM(response.data.sys.sunrise * 1000);
@@ -130,7 +172,6 @@ function locationSearch(event) {
   event.preventDefault();
   let searchLocation = document.querySelector("h1");
   let inputLocation = document.querySelector("#input-city");
-  searchLocation.innerHTML = `${inputLocation.value}`;
   let units = `&units=metric`;
   let city = inputLocation.value;
   let key = `&appid=87fd0529e40a37893f5aceb0fea3c12a`;
@@ -140,9 +181,6 @@ function locationSearch(event) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}${key}${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
-
-let locationForm = document.querySelector("#location-form");
-locationForm.addEventListener("submit", locationSearch);
 
 function currentLocation(event) {
   event.preventDefault();
@@ -187,44 +225,4 @@ function displayForecast(response) {
 
 </div>`;
   }
-}
-let locationIcon = document.querySelector("#current-location");
-locationIcon.addEventListener("click", currentLocation);
-
-navigator.geolocation.getCurrentPosition(latLocation);
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", displayImperial);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayMetric);
-
-let celsiusTemp = null;
-let highCelsiusTemp = null;
-let lowCelsiusTemp = null;
-
-function displayImperial(event) {
-  event.preventDefault();
-  let temperatureDisplayed = document.querySelector("#current-temp");
-  let highTemp = document.querySelector("#high-temp");
-  let lowTemp = document.querySelector("#low-temp");
-  celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
-  let farenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  let highFarenTemp = (highCelsiusTemp * 9) / 5 + 32;
-  let lowFarenTemp = (lowCelsiusTemp * 9) / 5 + 32;
-  temperatureDisplayed.innerHTML = Math.round(farenheitTemp) + `°`;
-  highTemp.innerHTML = Math.round(highFarenTemp) + `°`;
-  lowTemp.innerHTML = Math.round(lowFarenTemp) + `°`;
-}
-function displayMetric(event) {
-  event.preventDefault();
-  let temperatureDisplayed = document.querySelector("#current-temp");
-  let highTemp = document.querySelector("#high-temp");
-  let lowTemp = document.querySelector("#low-temp");
-  celsiusLink.classList.add("active");
-  farenheitLink.classList.remove("active");
-  temperatureDisplayed.innerHTML = Math.round(celsiusTemp) + `°`;
-  highTemp.innerHTML = Math.round(highCelsiusTemp) + `°`;
-  lowTemp.innerHTML = Math.round(lowCelsiusTemp) + `°`;
 }
