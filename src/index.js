@@ -163,7 +163,7 @@ function showData(response) {
   iconElement = document.querySelector("#today-icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
   );
   formatDate(now);
 }
@@ -192,10 +192,10 @@ function latLocation(position) {
   let unit = `&units=metric`;
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${apiKey}${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}${apiKey}${unit}`;
   axios.get(apiUrl).then(showData);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}${apiKey}${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}${apiKey}${unit}`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -212,7 +212,7 @@ function displayForecast(response) {
       <span class="col-2 date">${formatForecastDate(forecast.dt * 1000)}</span>
       <span class="col-5 day">${formatForecastDay(forecast.dt * 1000)}</span>
       <span class="col-3 weather" >
-      <img id="forecast-icon" src="http://openweathermap.org/img/wn/${
+      <img id="forecast-icon" src="https://openweathermap.org/img/wn/${
         forecast.weather[0].icon
       }@4x.png"/>
         </span>
