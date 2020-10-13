@@ -88,7 +88,7 @@ function formatDateHM(timestamp) {
     minutes = `0${minutes}`;
   }
 
-  return `${hour}:${minutes}`;
+  return `${hour - 1}:${minutes}`;
 }
 
 function formatForecastDate(timestamp) {
@@ -136,9 +136,13 @@ function displayMetric(event) {
 }
 function showData(response) {
   let sunriseTime = document.querySelector("#sunrise");
-  sunriseTime.innerHTML = formatDateHM(response.data.sys.sunrise * 1000);
+  sunriseTime.innerHTML = formatDateHM(
+    (response.data.sys.sunrise + response.data.timezone) * 1000
+  );
   let sunsetTime = document.querySelector("#sunset");
-  sunsetTime.innerHTML = formatDateHM(response.data.sys.sunset * 1000);
+  sunsetTime.innerHTML = formatDateHM(
+    (response.data.sys.sunset + response.data.timezone) * 1000
+  );
   celsiusTemp = response.data.main.temp;
   highCelsiusTemp = response.data.main.temp_max;
   lowCelsiusTemp = response.data.main.temp_min;
