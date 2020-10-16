@@ -201,7 +201,7 @@ function displayForecast(response) {
       <span class="col-2 highLow">
         <strong>  ${Math.round(
           forecast.main.temp_max
-        )}°</strong> <br />${Math.round(forecast.main.temp_min)}°</span
+        )}°</strong><br />${Math.round(forecast.main.temp_min)}°</span
       >
     </div>
 </div>`;
