@@ -38,27 +38,6 @@ let shortMonths = [
   "DEC",
 ];
 
-let locationForm = document.querySelector("#location-form");
-locationForm.addEventListener("submit", locationSearch);
-
-let locationIcon = document.querySelector("#current-location");
-locationIcon.addEventListener("click", currentLocation);
-
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", displayImperial);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayMetric);
-
-let celsiusTemp = null;
-let highCelsiusTemp = null;
-let lowCelsiusTemp = null;
-
-let updateDateTime = document.querySelector(".dateTime");
-updateDateTime.innerHTML = formatDate(now);
-
-navigator.geolocation.getCurrentPosition(latLocation);
-
 function formatDate(date) {
   let currentDay = days[date.getDay()];
   let currentMonth = months[date.getMonth()];
@@ -229,3 +208,23 @@ function displayForecast(response) {
 </div>`;
   }
 }
+let locationForm = document.querySelector("#location-form");
+locationForm.addEventListener("submit", locationSearch);
+
+let locationIcon = document.querySelector("#current-location");
+locationIcon.addEventListener("click", currentLocation);
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayImperial);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayMetric);
+
+let celsiusTemp = null;
+let highCelsiusTemp = null;
+let lowCelsiusTemp = null;
+
+let updateDateTime = document.querySelector(".dateTime");
+updateDateTime.innerHTML = formatDate(now);
+
+navigator.geolocation.getCurrentPosition(latLocation);
