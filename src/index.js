@@ -153,7 +153,6 @@ function showData(response) {
 
 function locationSearch(event) {
   event.preventDefault();
-  let searchLocation = document.querySelector("h1");
   let inputLocation = document.querySelector("#input-city");
   let units = `&units=metric`;
   let city = inputLocation.value;
