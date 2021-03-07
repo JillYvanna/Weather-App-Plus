@@ -143,7 +143,7 @@ function showData(response) {
   searchLocation.innerHTML = `${response.data.name} , ${response.data.sys.country}`;
   let weatherDetail = document.querySelector("#today-description");
   weatherDetail.innerHTML = response.data.weather[0].description;
-  iconElement = document.querySelector("#today-icon");
+  let iconElement = document.querySelector("#today-icon");
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`
